@@ -12,7 +12,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node --watch-path=./routes server.js",
     "dev": "nodemon server.js",
     "submit": "node submit.js"
   },
