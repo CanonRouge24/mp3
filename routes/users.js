@@ -238,14 +238,14 @@ module.exports = function (router)
 
         // Update tasks as necessary
         const oldPending = user.pendingTasks.map(String),
-              newPending = pendingTasks.map(String)
+              newPending = pendingTasks.map(String),
 
               oldSet = new Set(oldPending),
               newSet = new Set(newPending),
 
               // Tasks added and removed in the update
-              removed = oldSet.filter(task => !newSet.has(task)),
-              added = newSet.filter(task => !oldSet.has(task));
+              removed = oldPending.filter(task => !newSet.has(task)),
+              added = newPending.filter(task => !oldSet.has(task));
 
         user.name = name;
         user.email = email;

@@ -197,6 +197,8 @@ module.exports = function (router)
   .put(
     async (request, response) =>
     {
+      const { id } = request.params;
+
       try
       {
         // Ensure ObjectId is valid
@@ -346,7 +348,7 @@ module.exports = function (router)
       try
       {
         // Ensure ObjectId is valid
-        if (!mongoose.isValidObjectId)
+        if (!mongoose.isValidObjectId(id))
         {
           return fail(response, "Task not found", 404);
         }
@@ -372,7 +374,7 @@ module.exports = function (router)
           { _id: String(task._id) }
         );
 
-        return ok(response, "Task deleted", task, 200);
+        return ok(response, "Task deleted", task, 204);
       }
       catch (error)
       {
